@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pythagorian function</title>
+</head>
+<body>
+    <input type="text" name="" id="n1" placeholder="enter side 1">
+    <input type="number" name="" id="n2" placeholder="enter side 2">
+    <input type="number" name="" id="n3" placeholder="enter side 3">
+    <input type="button" value="click here" onclick="tri()">
+
+    <script type="text/javascript">
+        function tri(){
+
+            var a=parseInt(document.getElementById('n1').value);
+            var b=parseInt(document.getElementById('n2').value);
+            var c=parseInt(document.getElementById('n3').value);
+
+            //finding biggest side
+            // var c;
+            // c=(a*a)+(b*b);
+            // document.write(Math.sqrt(c));
+
+            if(a>b && a>c)
+            {
+                big=a;
+                if((a*a)==(b*b)+(c*c)){
+                    document.write("it is pythagorian triangle");
+                }
+                else{
+                    document.write("it is not pythagorian triangle"); 
+                }
+            }
+            else if(b>a && b>c){
+                big=b;
+                if((b*b)==(a*a)+(c*c)){
+                    document.write("it is pythagorian triangle");
+                }
+                else{
+                    document.write("it is not pythagorian triangle"); 
+                }
+            }
+            else{
+                big=c;
+                if((c*c)==(a*a)+(b*b)){
+                    document.write("it is pythagorian triangle");
+                }
+                else{
+                    document.write("it is not pythagorian triangle"); 
+                }
+            }
+            
+        }
+
+
+    </script>
+
+</body>
+</html>
