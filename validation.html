@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function validate() {
+        var result = true;
+        var name = document.getElementById("nm1");
+        var name_err = document.getElementById("fn_err");
+        var email = document.getElementById("em1");
+        var email_err = document.getElementById("em_err");
+        var mobile = document.getElementById("mn");
+        var mobile_err = document.getElementById("mn_err");
+        var pwd = document.getElementById("pwd1");
+        var pwd_err = document.getElementById("pwd_err");
+        var cpwd = document.getElementById("cpwd1");
+        var cpwd_err = document.getElementById("cpwd_err");
+        var address = document.getElementById("add1");
+        var address_err = document.getElementById("add_err");
+        var gender = document.getElementById("gender");
+        var gender_err = document.getElementById("gender_err");
+        var hobbies = document.getElementById("hobbies");
+        var hobbies_err = document.getElementById("hobbies_err");
+
+        // name field validation
+        if (name.value == "") {
+          name_err.innerHTML = "Name field cannot be empty";
+          name_err.style.color = "red";
+          name.style.border = "red 2px solid";
+          result = false;
+        } else {
+          var name_reg = /^[a-zA-Z ]{2,25}$/;
+          var a = name_reg.test(name.value);
+          if (a) {
+            name_err.innerHTML = "";
+            name.style.border = "green 2px solid";
+          } else {
+            name_err.innerHTML =
+              "Name contains only letters minimum length 2 and maximum 25";
+            name_err.style.color = "red";
+            name.style.border = "red 2px solid";
+            result = false;
+          }
+        }
+        // Email Validation
+        if (email.value == "") {
+          email_err.innerHTML = "Email field cannot be empty";
+          email_err.style.color = "red";
+          email.style.border = "red 2px solid";
+          result = false;
+        } else {
+          var email_reg = /^[a-zA-Z0-9._]+@([a-zA-Z]+\.)+[a-zA-Z]{2,3}$/;
+          var b = email_reg.test(email.value);
+          if (b) {
+            email_err.innerHTML = "";
+            email.style.border = "green 2px solid";
+          } else {
+            email_err.innerHTML = "Invalid Email";
+            email_err.style.color = "red";
+            email.style.border = "red 2px solid";
+            result = false;
+          }
+        }
+        // Mobile Number Validation
+        if (mobile.value == "") {
+          mobile_err.innerHTML = "Mobile Number field cannot be empty";
+          mobile_err.style.color = "red";
+          mobile.style.border = "red 2px solid";
+          result = false;
+        } else {
+          var mobile_reg = /^[0-9]{10}$/;
+          var c = mobile_reg.test(mobile.value);
+          if (c) {
+            mobile_err.innerHTML = "";
+            mobile.style.border = "green 2px solid";
+          } else {
+            mobile_err.innerHTML = "Invalid Mobile Number";
+            mobile_err.style.color = "red";
+            mobile.style.border = "red 2px solid";
+            result = false;
+          }
+        }
+        //Password Validation
+        if (pwd.value == "") {
+          pwd_err.innerHTML = "Password field cannot be empty";
+          pwd_err.style.color = "red";
+          pwd.style.border = "red 2px solid";
+          result = false;
+        } else if (pwd.value.length < 8) {
+          pwd_err.innerHTML = "Password must be at least 8 characters long";
+          pwd_err.style.color = "red";
+          pwd.style.border = "red 2px solid";
+          result = false;
+        } else if (pwd.value.length > 25) {
+          pwd_err.innerHTML = "Password must not exceed 25 characters";
+          pwd_err.style.color = "red";
+          pwd.style.border = "red 2px solid";
+          result = false;
+        } else {
+          var pwd_reg =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])[A-Za-z\d@$!#%*?&]{8,25}$/;
+          var d = pwd_reg.test(pwd.value);
+          if (d) {
+            pwd_err.innerHTML = "";
+            pwd.style.border = "green 2px solid";
+          } else {
+            pwd_err.innerHTML =
+              "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character";
+            pwd_err.style.color = "red";
+            pwd.style.border = "red 2px solid";
+            result = false;
+          }
+        }
+        // Confirm Password Validation
+        if (cpwd.value == "") {
+          cpwd_err.innerHTML = "Confirm Password field cannot be empty";
+          cpwd_err.style.color = "red";
+          cpwd.style.border = "red 2px solid";
+          result = false;
+        } else if (cpwd.value != pwd.value) {
+          cpwd_err.innerHTML = "Passwords do not match";
+          cpwd_err.style.color = "red";
+          cpwd.style.border = "red 2px solid";
+          result = false;
+        } else {
+          cpwd_err.innerHTML = "";
+          cpwd.style.border = "green 2px solid";
+        }
+
+        // Gender Validation
+        if (gender.value == "") {
+          gender_err.innerHTML = "Gender field cannot be empty";
+          gender_err.style.color = "red";
+          gender.style.border = "red 2px solid";
+          result = false;
+        } else {
+          gender_err.innerHTML = "";
+          gender.style.border = "green 2px solid";
+        }
+        // Hobbies Validation
+        // var hobbiesChecked = document.getElementsByName("hobbies");
+        // var checkedCount = 0;
+        // for (var i = 0; i < hobbiesChecked.length; i++) {
+        //   if (hobbiesChecked[i].checked) {
+        //     checkedCount++;
+        //   }
+        // }
+        // if (checkedCount < 2) {
+        //   hobbies_err.innerHTML = "Please select at least 2 hobbies";
+        //   hobbies_err.style.color = "red";
+        //   for (var i = 0; i < hobbiesChecked.length; i++) {
+        //     hobbiesChecked[i].style.outline = "2px solid red";
+        //   }
+        //   result = false;
+        // } else {
+        //   hobbies_err.innerHTML = "";
+        //   for (var i = 0; i < hobbiesChecked.length; i++) {
+        //     hobbiesChecked[i].style.outline = "none";
+        //   }
+        // }
+        // Hobbies Validation
+        if (hobbies.value == "") {
+          hobbies_err.innerHTML = "Hobbies field cannot be empty";
+          hobbies_err.style.color = "red";
+          hobbies.style.border = "red 2px solid";
+          result = false;
+        } else {
+          hobbies_err.innerHTML = "";
+          hobbies.style.border = "green 2px solid";
+        }
+
+        // Address Validation
+        if (address.value == "") {
+          address_err.innerHTML = "Address field cannot be empty";
+          address_err.style.color = "red";
+          address.style.border = "red 2px solid";
+          result = false;
+        } else {
+          address_err.innerHTML = "";
+          address.style.border = "green 2px solid";
+        }
+        return result;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="" onsubmit="return(validate())">
+      Enter Name:<input type="text" name="nm" id="nm1" />
+      <span id="fn_err"></span>
+      <br />
+      Enter Email: <input type="text" name="em" id="em1" />
+      <span id="em_err"></span>
+      <br />
+      Enter Mobile Number: <input type="text" name="mn1" id="mn" />
+      <span id="mn_err"></span>
+      <br />
+      select Gender:
+      <input type="radio" name="gender" id="gender" value="male" />Male
+      <input type="radio" name="gender" id="gender" value="female" />Female
+      <input type="radio" name="gender" id="gender" value="other" />Other
+      <span id="gender_err"></span>
+      <br />
+      select Hobbies:
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="hobbies"
+        value="reading"
+      />Reading
+      <input
+        type="checkbox"
+        name="hobbies"
+        id="hobbies"
+        value="writing"
+      />Writing
+      <input type="checkbox" name="hobbies" id="hobbies" value="coding" />Coding
+      <span id="hobbies_err"></span>
+      <br />
+      Enter PAssword: <input type="text" name="pwd" id="pwd1" />
+      <span id="pwd_err"></span>
+      <br />
+      Confirm Password: <input type="text" name="cpwd" id="cpwd1" />
+      <span id="cpwd_err"></span>
+      <br />
+      Enter Address:
+      <textarea name="add" id="add1"></textarea>
+      <span id="add_err"></span>
+      <br />
+      <input type="submit" value="Register" />
+    </form>
+  </body>
+</html>

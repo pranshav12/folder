@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function decimal_binary(n) {
+        var ans = "";
+        while (n != 0) {
+          ans = ans + (n % 2);
+          n = parseInt(n / 2);
+        }
+        ans = ans.split("").reverse().join("");
+        return ans;
+      }
+      function decimal_octal(n) {
+        var ans = "";
+        while (n != 0) {
+          ans = ans + (n % 8);
+          n = parseInt(n / 8);
+        }
+        ans = ans.split("").reverse().join("");
+        return ans;
+      }
+      function decimal_hexadecimal(n) {
+        var ans = "";
+        while (n != 0) {
+          var ans1 = "";
+          if (n % 16 <= 9) {
+            ans1 = n % 10;
+          } else if (n % 16 == 10) {
+            ans1 = "A";
+          } else if (n % 16 == 11) {
+            ans1 = "B";
+          } else if (n % 16 == 12) {
+            ans1 = "C";
+          } else if (n % 16 == 13) {
+            ans1 = "D";
+          } else if (n % 16 == 14) {
+            ans1 = "E";
+          } else {
+            ans1 = "F";
+          }
+          ans = ans + ans1;
+          n = parseInt(n / 16);
+        }
+        ans = ans.split("").reverse().join("");
+        return ans;
+      }
+      function Base_convert() {
+        var n = parseInt(document.getElementById("n").value);
+        var fb = parseInt(document.getElementById("from_base").value);
+        var tb = parseInt(document.getElementById("to_base").value);
+        var ans = "";
+
+        if (fb == 10 && tb == 2) {
+          //decimal to binary
+          document.getElementById("p1").innerHTML = decimal_binary(n);
+        } else if (fb == 10 && tb == 8) {
+          // decimal to octal
+          document.getElementById("p1").innerHTML = decimal_octal(n);
+        } else if (fb == 10 && tb == 16) {
+          //decimal to hexadecimal
+          var n=
+          document.getElementById("p1").innerHTML = decimal_hexadecimal(n);
+        } else if (fb == 2 && tb == 10) {
+          //binary to decimal
+          ans = 0;
+          i = 0;
+          while (n != 0) {
+            var x = n % 10;
+            if (x > 1) {
+              var flag = 1;
+              break;
+            } else {
+              ans = ans + x * Math.pow(2, i);
+            }
+            i++;
+            n = parseInt(n / 10);
+          }
+          if (flag == 1) {
+            document.getElementById("p1").innerHTML = "Invalid Binary number";
+            document.getElementById("p1").style.color = "red";
+          } else {
+            document.getElementById("p1").innerHTML = ans;
+          }
+        } else if (fb == 2 && tb == 8) {
+          //binary to octal
+        } else if (fb == 2 && tb == 16) {
+          //binary to hexadecimal
+        } else if (fb == 8 && tb == 2) {
+          //octal to binary
+        } else if (fb == 8 && tb == 10) {
+          //octal to decimal
+          ans = 0;
+          i = 0;
+          while (n != 0) {
+            var x = n % 10;
+            if (x > 7) {
+              var flag = 1;
+              break;
+            } else {
+              ans = ans + x * Math.pow(8, i);
+            }
+            i++;
+            n = parseInt(n / 10);
+          }
+          if (flag == 1) {
+            document.getElementById("p1").innerHTML = "Invalid Binary number";
+            document.getElementById("p1").style.color = "red";
+          } else {
+            document.getElementById("p1").innerHTML = ans;
+          }
+        } else if (fb == 8 && tb == 16) {
+          //octal to Hexadecimal
+        } else if (fb == 16 && tb == 2) {
+          //Hexadecimal to binary
+        } else if (fb == 16 && tb == 8) {
+          //hexadecimal to octal
+        } else if (fb == 16 && tb == 10) {
+          //hexadecimal to decimal
+        }
+      }
+    </script>
+  </head>
+  <body>
+    Enter Number: <input type="text" name="" id="n" /> <br />Select From Base:
+    <select name="" id="from_base">
+      <option value="2">Binary</option>
+      <option value="8">Octal</option>
+      <option value="10">Decimal</option>
+      <option value="16">HexaDecimal</option>
+    </select>
+    <br />
+    Select to Base:
+    <select name="" id="to_base">
+      <option value="2">Binary</option>
+      <option value="8">Octal</option>
+      <option value="10">Decimal</option>
+      <option value="16">HexaDecimal</option>
+    </select>
+    <br />
+    <input type="button" value="Convert" onclick="Base_convert()" />
+    <br />
+    <p id="p1">Answer:</p>
+  </body>
+</html>
